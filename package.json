@@ -1,0 +1,32 @@
+{
+  "name": "googletranslate",
+  "productName": "Translator",
+  "version": "1.0.0",
+  "description": "Tray app for Google Translate",
+  "main": "src/server/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "author": "Dogacan Bilgili",
+  "dependencies": {
+    "electron-store": "^5.0.0",
+    "electron-util": "^0.12.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.0",
+    "electron": "^6.0.12",
+    "electron-builder": "^21.2.0",
+    "eslint": "^5.0.0",
+    "eslint-config-airbnb-base": "^14.0.0"
+  },
+  "build": {
+    "files": [
+      "**/*",
+      "src/client"
+    ],
+    "dmg": {
+      "title": "${productName}"
+    }
+  }
+}

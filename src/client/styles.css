@@ -1,0 +1,52 @@
+body {
+  margin:0;
+  overflow:hidden;
+}
+
+#root {
+  transform: translateY(12px);
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#webview {
+  display:inline-flex;
+  width:500px;
+  height:360px;
+  margin-top: -1px;
+}
+
+#arrow {
+  position: fixed;
+  z-index: 1;
+}
+
+#arrow:before {
+  content: "";
+  height: 0;
+  width: 0;
+  border-width: 0 8px 12px 8px;
+  border-style: solid;
+  border-color: transparent transparent white transparent;
+  position: fixed;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  font-family: Arial;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: #5186EC;
+}
+
+.hide {
+  display: none !important;
+}
