@@ -1,7 +1,7 @@
 # Google Translate
 
 <p align="center">
-<img width="600" alt="Screenshot 2019-12-25 at 03 16 02" src="https://user-images.githubusercontent.com/22943912/71427090-01de9a80-26c5-11ea-8cef-0cf6ebc8a8d3.png">
+<img width="600" alt="Screenshot 2019-12-30 at 01 47 19" src="https://user-images.githubusercontent.com/22943912/71563873-f36af700-2aa7-11ea-9647-448dd8144cb5.png">
 </p>
 
 This is a menu bar application wrapping a simplified version of Google Translate webpage in a `webview` for quick access to the translation service.
