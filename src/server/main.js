@@ -31,6 +31,10 @@ const initStore = () => {
   if (store.get('clearOnBlur') === undefined) {
     store.set('clearOnBlur', true);
   }
+
+  if (store.get('useShortcut') === undefined) {
+    store.set('useShortcut', true);
+  }
 };
 
 const createMainWindow = () => {
@@ -57,9 +61,14 @@ const createMainWindow = () => {
     mainWindow.loadURL(`file://${path.join(__dirname, '../../src/client/index.html')}`);
   }
 
+  mainWindow.on('focus', () => {
+    globalShortcut.register('Command+R', () => null);
+  })
+
   mainWindow.on('blur', () => {
     if (!mainWindow.webContents.isDevToolsOpened()) {
       mainWindow.hide();
+      globalShortcut.unregister('Command+R');
     }
     if (store.get('clearOnBlur')) {
       mainWindow.webContents.send('CLEAR_TEXT_AREA');
@@ -96,14 +105,6 @@ if (!gotTheLock) {
     mainWindow.webContents.on('dom-ready', applyPreferences);
 
     mainWindow.webContents.on('did-fail-load', () => console.log('fail'));
-
-    if (!is.development) {
-      globalShortcut.register('Command+R', () => null);
-    }
-
-    globalShortcut.register('CommandOrControl+G', () => {
-      trayObject.toggleWindow();
-    });
   });
 
   app.on('second-instance', () => {

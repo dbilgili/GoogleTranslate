@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-const { Tray, Menu } = require('electron');
+const { Tray, Menu, globalShortcut } = require('electron');
 const path = require('path');
 
 class TrayGenerator {
@@ -40,6 +40,17 @@ class TrayGenerator {
     }
   };
 
+  toggleShortcut = (event) => {
+    this.store.set('useShortcut', event)
+
+    if (event) {
+      globalShortcut.register('CommandOrControl+G', this.toggleWindow);
+    } else {
+      globalShortcut.unregister('CommandOrControl+G');
+
+    }
+  }
+
   rightClickMenu = () => {
     const menu = [
       {
@@ -64,6 +75,12 @@ class TrayGenerator {
         click: (event) => this.store.set('launchAtStart', event.checked),
       },
       {
+        label: 'Use CMD+G shortcut',
+        type: 'checkbox',
+        checked: this.store.get('useShortcut'),
+        click: (event) => this.toggleShortcut(event.checked),
+      },
+      {
         type: 'separator'
       },
       {
@@ -80,6 +97,7 @@ class TrayGenerator {
     this.setWinPosition();
 
     this.tray.setIgnoreDoubleClickEvents(true);
+    this.toggleShortcut(this.store.get('useShortcut'));
 
     this.tray.on('click', () => {
       this.toggleWindow();
