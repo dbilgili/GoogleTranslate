@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-undef
 iframeDOM = {
   deletePageContents: () => {
-    const header = document.querySelector('.gb_Md.gb_3d.gb_Ud.gb_Td');
+    const header = document.getElementsByTagName('header')[0];
     header.parentNode.removeChild(header);
 
     const giveFeedback = document.querySelector('.feedback-link');
