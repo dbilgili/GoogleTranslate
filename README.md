@@ -11,5 +11,5 @@ Use `CMD+G` to show/hide it quickly and `CMD+SHIFT+S` to swap active languages.
 
 There are two options to toggle, which can be accessed by right clicking on the tray icon
 
-- __Remember language:__ When enabled this option saves your last selected languages.
+- __Remember languages:__ When enabled this option saves your last selected languages.
 - __Clear on blur:__ When enabled this option clears the input field when the application window is hidden.
