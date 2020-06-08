@@ -22,6 +22,5 @@ iframeDOM = {
   getURL: () => window.location.hash,
   setURL: (arg) => {
     window.location.hash = arg;
-    console.log(arg);
   },
 };
