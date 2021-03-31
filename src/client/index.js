@@ -5,6 +5,7 @@ const webview = document.querySelector('webview');
 const loader = document.querySelector('#loader');
 
 webview.addEventListener('dom-ready', () => {
+  webview.focus()
   webview.executeJavaScript('iframeDOM.deletePageContents()');
   setTimeout(() => {
     loader.classList.add('hide');
@@ -15,7 +16,7 @@ webview.addEventListener('did-navigate-in-page', () => {
   const promise = webview.executeJavaScript('iframeDOM.getURL()');
   promise.then((val) => {
     ipcRenderer.send('HASH', val.split('&text')[0]);
-  });
+  })
 });
 
 ipcRenderer.on('SAVED_HASH', (event, arg) => {
