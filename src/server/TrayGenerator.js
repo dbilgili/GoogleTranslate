@@ -24,9 +24,8 @@ class TrayGenerator {
   }
 
   showWindow = () => {
-    this.mainWindow.show();
     this.mainWindow.setVisibleOnAllWorkspaces(true);
-    this.mainWindow.focus();
+    this.mainWindow.show();
     this.mainWindow.setVisibleOnAllWorkspaces(false);
   };
 
