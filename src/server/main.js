@@ -10,12 +10,15 @@ const { is } = require('electron-util');
 
 const path = require('path');
 const Store = require('electron-store');
+const { NSEventMonitor, NSEventMask } = require('nseventmonitor');
 const TrayGenerator = require('./TrayGenerator');
 
 let mainWindow = null;
 let trayObject = null;
 
 const gotTheLock = app.requestSingleInstanceLock();
+
+const macEventMonitor = new NSEventMonitor();
 
 const store = new Store();
 
@@ -47,10 +50,12 @@ const createMainWindow = () => {
     fullscreenable: false,
     resizable: is.development,
     webPreferences: {
-      webviewTag: true,
       devTools: is.development,
+      webviewTag: true,
+      backgroundThrottling: false,
       nodeIntegration: true,
-      backgroundThrottling: false
+      contextIsolation: false,
+      enableRemoteModule: true,
     }
   });
 
@@ -63,12 +68,16 @@ const createMainWindow = () => {
 
   mainWindow.on('focus', () => {
     globalShortcut.register('Command+R', () => null);
+    macEventMonitor.start((NSEventMask.leftMouseDown || NSEventMask.rightMouseDown), () => {
+      mainWindow.hide();
+    });
   })
 
   mainWindow.on('blur', () => {
     if (!mainWindow.webContents.isDevToolsOpened()) {
       mainWindow.hide();
       globalShortcut.unregister('Command+R');
+      macEventMonitor.stop();
     }
     if (store.get('clearOnBlur')) {
       mainWindow.webContents.send('CLEAR_TEXT_AREA');
