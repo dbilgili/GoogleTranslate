@@ -21,7 +21,12 @@ iframeDOM = {
     frame.style = 'height:100vh;';
   },
   clearTextArea: () => {
-    document.getElementsByTagName('button')[12].click();
+    const clearButton = document.querySelector('[aria-label="Clear source text"]');
+    if (clearButton) {
+      clearButton.click()
+    } else {
+      document.getElementsByTagName('button')[24].click();
+    }
   },
   getURL: () => window.location.hash,
   setURL: (arg) => {

@@ -1,7 +1,7 @@
 {
   "name": "googletranslate",
   "productName": "Translator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tray app for Google Translate",
   "main": "src/server/main.js",
   "scripts": {
