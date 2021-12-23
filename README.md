@@ -2,7 +2,7 @@
 
 <p align="center">
   <img width="600" alt="Screenshot 2019-12-30 at 01 47 19" src="https://user-images.githubusercontent.com/22943912/71563873-f36af700-2aa7-11ea-9647-448dd8144cb5.png">
-  <p align="center">💾 <a href="https://github.com/dbilgili/GoogleTranslate/releases/download/1.0.1/Translator-1.0.1.dmg.zip">Download the latest version</a><p>
+  <p align="center"><a href="https://github.com/dbilgili/GoogleTranslate/releases/download/1.0.2/Translator-1.0.2.dmg.zip">Download the latest version</a><p>
 </p>
 
 This is a menu bar application wrapping a simplified version of Google Translate webpage in a `webview` for quick access to the translation service.
